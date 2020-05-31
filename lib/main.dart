@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:salarix/ui/views/home/home_view.dart';
+import 'package:salarix/app/router.gr.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,7 +11,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      home: HomeView(),
+      initialRoute: Routes.startupViewRoute,
+      onGenerateRoute: Router().onGenerateRoute,
     );
   }
 }
