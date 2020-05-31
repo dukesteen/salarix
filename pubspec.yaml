@@ -25,6 +25,7 @@ dependencies:
     sdk: flutter
   
   stacked: ^1.2.2
+  stacked_services:
   auto_route:
 
   get_it:
