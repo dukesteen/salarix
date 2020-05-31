@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:salarix/styles.dart';
 import 'package:salarix/ui/views/home/home_view.dart';
+import 'package:salarix/ui/views/smart_widgets/salary_entry_card/salary_entry_card.dart';
 import 'package:salarix/ui/views/startup/startup_viewmodel.dart';
 import 'package:stacked/stacked.dart';
 
@@ -44,10 +46,12 @@ class StartupView extends StatelessWidget {
                           FlatButton(
                             onPressed: () {
                               showModalBottomSheet(
-                                  context: context,
-                                  builder: (context) => Container(
-                                        child: HomeView(),
-                                      ));
+                                context: context,
+                                builder: (context) => Container(
+                                  height: 200.0,
+                                  child: HomeView(),
+                                ),
+                              );
                             },
                             child: Text(
                               'Go to add page',
@@ -71,27 +75,24 @@ class StartupView extends StatelessWidget {
                     ),
                   ),
                   child: Padding(
-                    padding: EdgeInsets.only(
-                      left: 35.0,
-                      top: 40.0,
-                      right: 35.0,
-                    ),
-                    child: CustomScrollView(
-                      slivers: <Widget>[
-                        SliverList(
-                          delegate: SliverChildListDelegate(
-                            model.salaryModels
-                                .map((e) => Text(
-                                      '${e.dateWorked.toString()}, ${e.hoursWorked}, ${e.hourlyWage}',
-                                      style: UiTextStyles
-                                          .montserrat16ptSemiBoldSpaceCadet,
-                                    ))
-                                .toList(),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
+                      padding: EdgeInsets.only(
+                        left: 35.0,
+                        top: 40.0,
+                        right: 35.0,
+                      ),
+                      child: ListView.builder(
+                        itemBuilder: (BuildContext context, int index) {
+                          print('rebuilt list (index: $index)');
+                          return Provider.value(
+                            value: model.salaryModels[index],
+                            child: SalaryEntryCard(
+                              salaryModel: model.salaryModels[index],
+                              key: UniqueKey(),
+                            ),
+                          );
+                        },
+                        itemCount: model.salaryModels.length,
+                      )),
                 ),
               )
             ],

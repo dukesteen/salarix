@@ -16,7 +16,8 @@ class SalaryService with ReactiveServiceMixin {
     _salaryModels.add(model);
   }
 
-  void remove() {
-    _salaryModels.removeLast();
+  void remove(String uuid) {
+    print('removed (inside service)');
+    _salaryModels.removeWhere((element) => element.id == uuid);
   }
 }

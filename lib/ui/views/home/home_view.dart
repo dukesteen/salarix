@@ -17,10 +17,6 @@ class HomeView extends StatelessWidget {
               onPressed: model.addEntry,
               child: Text('Add item'),
             ),
-            FlatButton(
-              onPressed: model.removeEntry,
-              child: Text('Remove last item'),
-            ),
           ],
         ),
       ),

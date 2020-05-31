@@ -25,11 +25,6 @@ class HomeViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  void removeEntry() {
-    _salaryService.remove();
-    notifyListeners();
-  }
-
   void back() {
     _navigationService.back();
     notifyListeners();
