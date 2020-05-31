@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:salarix/app/locator.dart';
 import 'package:salarix/app/router.gr.dart';
+import 'package:stacked_services/stacked_services.dart';
 
 void main() {
   setupLocator();
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       initialRoute: Routes.startupViewRoute,
       onGenerateRoute: Router().onGenerateRoute,
+      navigatorKey: locator<NavigationService>().navigatorKey,
     );
   }
 }
