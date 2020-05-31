@@ -27,7 +27,7 @@ dependencies:
   stacked: ^1.2.2
   stacked_services:
   auto_route:
-
+  observable_ish:
   get_it:
   injectable:
   # The following adds the Cupertino Icons font to your application.
