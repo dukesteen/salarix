@@ -6,6 +6,7 @@
 
 import 'package:salarix/services/third_party_services.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:salarix/services/salary_service.dart';
 import 'package:get_it/get_it.dart';
 
 void $initGetIt(GetIt g, {String environment}) {
@@ -14,6 +15,7 @@ void $initGetIt(GetIt g, {String environment}) {
       () => thirdPartyServicesModule.dialogService);
   g.registerLazySingleton<NavigationService>(
       () => thirdPartyServicesModule.navigationService);
+  g.registerLazySingleton<SalaryService>(() => SalaryService());
   g.registerLazySingleton<SnackbarService>(
       () => thirdPartyServicesModule.snackbarService);
 }

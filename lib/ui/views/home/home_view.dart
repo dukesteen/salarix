@@ -6,12 +6,22 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<HomeViewModel>.reactive(
-      builder: (context, model, child) => Scaffold(
-        body: Center(
-          child: Text(model.title),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: model.updateCounter,
+      builder: (context, model, child) => Center(
+        child: Column(
+          children: <Widget>[
+            FlatButton(
+              onPressed: model.back,
+              child: Text('Back to home'),
+            ),
+            FlatButton(
+              onPressed: model.addEntry,
+              child: Text('Add item'),
+            ),
+            FlatButton(
+              onPressed: model.removeEntry,
+              child: Text('Remove last item'),
+            ),
+          ],
         ),
       ),
       viewModelBuilder: () => HomeViewModel(),

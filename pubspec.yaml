@@ -24,7 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   
-  stacked: ^1.2.2
+  stacked: ^1.5.5+1
   stacked_services:
   auto_route:
   observable_ish:
