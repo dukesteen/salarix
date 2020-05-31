@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:salarix/app/locator.dart';
 import 'package:salarix/app/router.gr.dart';
 
 void main() {
+  setupLocator();
   runApp(MyApp());
 }
 
