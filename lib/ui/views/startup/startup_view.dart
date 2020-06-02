@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:salarix/styles.dart';
-import 'package:salarix/ui/views/home/home_view.dart';
+import 'package:salarix/ui/views/add_salary_entry/add_salary_entry_view.dart';
 import 'package:salarix/ui/views/smart_widgets/salary_entry_card/salary_entry_card.dart';
 import 'package:salarix/ui/views/startup/startup_viewmodel.dart';
 import 'package:stacked/stacked.dart';
@@ -47,10 +47,8 @@ class StartupView extends StatelessWidget {
                             onPressed: () {
                               showModalBottomSheet(
                                 context: context,
-                                builder: (context) => Container(
-                                  height: 200.0,
-                                  child: HomeView(),
-                                ),
+                                backgroundColor: Colors.transparent,
+                                builder: (context) => AddSalaryEntryView(),
                               );
                             },
                             child: Text(

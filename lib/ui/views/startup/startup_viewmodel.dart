@@ -1,12 +1,9 @@
 import 'package:salarix/app/locator.dart';
-import 'package:salarix/app/router.gr.dart';
 import 'package:salarix/models/salary_model.dart';
 import 'package:salarix/services/salary_service.dart';
 import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
 
 class StartupViewModel extends ReactiveViewModel {
-  final NavigationService _navigationService = locator<NavigationService>();
   final SalaryService _salaryService = locator<SalaryService>();
 
   String _welcomeMessage = "Welkom terug";
@@ -16,8 +13,4 @@ class StartupViewModel extends ReactiveViewModel {
 
   @override
   List<ReactiveServiceMixin> get reactiveServices => [_salaryService];
-
-  void navigateToHome() {
-    _navigationService.navigateTo(Routes.homeViewRoute);
-  }
 }

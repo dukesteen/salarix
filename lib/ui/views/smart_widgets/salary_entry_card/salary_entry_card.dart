@@ -45,46 +45,43 @@ class SalaryEntryCard extends ViewModelWidget<SalaryModel> {
         confirmDismiss: (dismissDirection) async {
           return await model.showConfirmationDialog(context, 'remove') == true;
         },
-        child: GestureDetector(
-          onTap: () => model.remove(model.salaryModel.id),
-          child: Container(
-            child: Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(22.0),
-              ),
-              margin: EdgeInsets.only(bottom: 15.0),
-              child: Padding(
-                padding: EdgeInsets.all(12.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          dateFormatter.format(model.salaryModel.dateWorked),
-                          style: UiTextStyles.montserrat20ptSemiBoldRed,
-                        ),
-                        Text(
-                          '${model.salaryModel.hoursWorked} uren ',
-                          style: UiTextStyles.montserrat16ptSemiBoldSpaceCadet,
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      width: 10.0,
-                    ),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Text(
-                        '€ ' + currencyString,
-                        style: UiTextStyles.montserrat30ptBoldSpaceCadet,
+        child: Container(
+          child: Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(22.0),
+            ),
+            margin: EdgeInsets.only(bottom: 15.0),
+            child: Padding(
+              padding: EdgeInsets.all(12.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        dateFormatter.format(model.salaryModel.dateWorked),
+                        style: UiTextStyles.montserrat20ptSemiBoldRed,
                       ),
+                      Text(
+                        '${model.salaryModel.hoursWorked} uren ',
+                        style: UiTextStyles.montserrat16ptSemiBoldSpaceCadet,
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    width: 10.0,
+                  ),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Text(
+                      '€ ' + currencyString,
+                      style: UiTextStyles.montserrat30ptBoldSpaceCadet,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),
