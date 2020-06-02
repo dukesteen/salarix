@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:salarix/styles.dart';
-import 'package:salarix/ui/views/add_salary_entry/add_salary_entry_view.dart';
+import 'package:salarix/ui/views/smart_widgets/salary_entry_card/custom_bottom_navbar/custom_bottom_navbar.dart';
 import 'package:salarix/ui/views/smart_widgets/salary_entry_card/salary_entry_card.dart';
+import 'package:salarix/ui/views/smart_widgets/salary_entry_card/stat_card/stat_card.dart';
+import 'package:salarix/ui/views/smart_widgets/salary_entry_card/stat_card/stat_card_types.dart';
 import 'package:salarix/ui/views/startup/startup_viewmodel.dart';
 import 'package:stacked/stacked.dart';
 
@@ -43,19 +45,18 @@ class StartupView extends StatelessWidget {
                       child: ListView(
                         scrollDirection: Axis.horizontal,
                         children: <Widget>[
-                          FlatButton(
-                            onPressed: () {
-                              showModalBottomSheet(
-                                context: context,
-                                backgroundColor: Colors.transparent,
-                                builder: (context) => AddSalaryEntryView(),
-                              );
-                            },
-                            child: Text(
-                              'Go to add page',
-                              style: UiTextStyles.montserrat16ptSemiBoldWhite,
+                          Provider.value(
+                            value: StatCardTypes.HOURS,
+                            child: StatCard(
+                              cardType: StatCardTypes.HOURS,
                             ),
-                          )
+                          ),
+                          Provider.value(
+                            value: StatCardTypes.SALARY,
+                            child: StatCard(
+                              cardType: StatCardTypes.SALARY,
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -95,6 +96,7 @@ class StartupView extends StatelessWidget {
               )
             ],
           ),
+          bottomNavigationBar: CustomBottomNavbar(),
         ),
       ),
       viewModelBuilder: () => StartupViewModel(),

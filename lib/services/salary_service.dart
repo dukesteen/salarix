@@ -10,7 +10,7 @@ class SalaryService with ReactiveServiceMixin {
   }
 
   RxList<SalaryModel> _salaryModels = RxList<SalaryModel>();
-  List<SalaryModel> get salaryModels => _salaryModels;
+  RxList<SalaryModel> get salaryModels => _salaryModels;
 
   void add(SalaryModel model) {
     _salaryModels.add(model);
