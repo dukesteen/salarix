@@ -12,6 +12,9 @@ class StartupView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<StartupViewModel>.reactive(
+      onModelReady: (model) {
+        print('Model initialized');
+      },
       builder: (context, model, child) => SafeArea(
         child: Scaffold(
           body: Stack(
@@ -48,12 +51,14 @@ class StartupView extends StatelessWidget {
                           Provider.value(
                             value: StatCardTypes.HOURS,
                             child: StatCard(
+                              key: UniqueKey(),
                               cardType: StatCardTypes.HOURS,
                             ),
                           ),
                           Provider.value(
                             value: StatCardTypes.SALARY,
                             child: StatCard(
+                              key: UniqueKey(),
                               cardType: StatCardTypes.SALARY,
                             ),
                           ),

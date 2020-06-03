@@ -7,7 +7,7 @@ import 'package:stacked/stacked.dart';
 class StatCard extends ViewModelWidget<StatCardTypes> {
   final StatCardTypes cardType;
 
-  StatCard({this.cardType});
+  StatCard({Key key, this.cardType});
 
   @override
   Widget build(BuildContext context, StatCardTypes cardType) {

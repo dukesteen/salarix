@@ -1,5 +1,6 @@
 import 'package:intl/intl.dart';
 import 'package:salarix/app/locator.dart';
+import 'package:salarix/models/salary_model.dart';
 import 'package:salarix/services/salary_service.dart';
 import 'package:salarix/ui/views/smart_widgets/salary_entry_card/stat_card/stat_card_types.dart';
 import 'package:stacked/stacked.dart';
@@ -11,15 +12,17 @@ class StatCardViewModel extends ReactiveViewModel {
   String _title;
   String get title => _title;
 
+  List<SalaryModel> get salaryModels => _salaryService.salaryModels;
+
   String get dataToDisplay {
     if (cardType == StatCardTypes.SALARY) {
       return '€ ' +
-          currencyFormatter.format(_salaryService.salaryModels.fold(
+          currencyFormatter.format(salaryModels.fold(
               0,
               (previousValue, element) =>
                   previousValue + (element.hoursWorked * element.hourlyWage)));
     } else if (cardType == StatCardTypes.HOURS) {
-      return _salaryService.salaryModels
+      return salaryModels
           .fold(0,
               (previousValue, element) => previousValue + element.hoursWorked)
           .toString();
@@ -30,7 +33,7 @@ class StatCardViewModel extends ReactiveViewModel {
   final StatCardTypes cardType;
   StatCardViewModel({this.cardType}) {
     if (cardType == StatCardTypes.SALARY) {
-      _title = 'Totaal salaris';
+      _title = 'Totaal bedrag';
     } else if (cardType == StatCardTypes.HOURS) {
       _title = 'Totaal uren';
     }

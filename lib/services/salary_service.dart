@@ -17,7 +17,7 @@ class SalaryService with ReactiveServiceMixin {
   }
 
   void remove(String uuid) {
-    print('removed (inside service)');
+    print('removed from list');
     _salaryModels.removeWhere((element) => element.id == uuid);
   }
 }
