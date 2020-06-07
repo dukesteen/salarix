@@ -16,12 +16,14 @@ class StatCardViewModel extends ReactiveViewModel {
 
   String get dataToDisplay {
     if (cardType == StatCardTypes.SALARY) {
+      print('[DataToDisplay(Salary) called');
       return '€ ' +
           currencyFormatter.format(salaryModels.fold(
               0,
               (previousValue, element) =>
                   previousValue + (element.hoursWorked * element.hourlyWage)));
     } else if (cardType == StatCardTypes.HOURS) {
+      print('[DataToDisplay(Hours)] called');
       return salaryModels
           .fold(0,
               (previousValue, element) => previousValue + element.hoursWorked)
@@ -32,6 +34,7 @@ class StatCardViewModel extends ReactiveViewModel {
 
   final StatCardTypes cardType;
   StatCardViewModel({this.cardType}) {
+    print('StatCard initialised');
     if (cardType == StatCardTypes.SALARY) {
       _title = 'Totaal bedrag';
     } else if (cardType == StatCardTypes.HOURS) {

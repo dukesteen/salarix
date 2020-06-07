@@ -29,7 +29,9 @@ class SalaryEntryCard extends ViewModelWidget<SalaryModel> {
     return ViewModelBuilder<SalaryEntryViewModel>.reactive(
       viewModelBuilder: () => SalaryEntryViewModel(salaryModel),
       builder: (context, model, child) => Dismissible(
-        onDismissed: (direction) => {model.remove(model.salaryModel.id)},
+        onDismissed: (direction) => {
+          model.remove(model.salaryModel.id, context),
+        },
         direction: DismissDirection.endToStart,
         background: Container(
           decoration: BoxDecoration(

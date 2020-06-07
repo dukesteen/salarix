@@ -1,22 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:salarix/app/locator.dart';
-import 'package:salarix/app/router.gr.dart';
 import 'package:salarix/models/salary_model.dart';
 import 'package:salarix/services/salary_service.dart';
+import 'package:salarix/ui/views/startup/startup_view.dart';
 import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
 
 class SalaryEntryViewModel extends ReactiveViewModel {
   final SalaryService _salaryService = locator<SalaryService>();
-  final NavigationService _navigationService = locator<NavigationService>();
 
   final SalaryModel salaryModel;
-  SalaryEntryViewModel(this.salaryModel);
+  SalaryEntryViewModel(this.salaryModel) {
+    print('SalaryEntryViewModel initialised');
+  }
 
-  void remove(String uuid) {
-    print('removed');
+  void remove(String uuid, BuildContext context) {
+    print('[SalaryEntryCardViewModel] removed');
     _salaryService.remove(uuid);
-    _navigationService.clearStackAndShow(Routes.startupViewRoute);
+    Navigator.pushReplacement(
+      context,
+      PageRouteBuilder(
+        pageBuilder: (_, __, ___) => StartupView(),
+        transitionDuration: Duration(seconds: 0),
+      ),
+    );
   }
 
   Future<bool> showConfirmationDialog(BuildContext context, String action) {

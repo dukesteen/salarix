@@ -4,13 +4,13 @@ import 'package:salarix/ui/views/smart_widgets/salary_entry_card/stat_card/stat_
 import 'package:salarix/ui/views/smart_widgets/salary_entry_card/stat_card/stat_card_viewmodel.dart';
 import 'package:stacked/stacked.dart';
 
-class StatCard extends ViewModelWidget<StatCardTypes> {
+class StatCard extends StatelessWidget {
   final StatCardTypes cardType;
 
   StatCard({Key key, this.cardType});
 
   @override
-  Widget build(BuildContext context, StatCardTypes cardType) {
+  Widget build(BuildContext context) {
     return ViewModelBuilder<StatCardViewModel>.reactive(
       viewModelBuilder: () => StatCardViewModel(cardType: cardType),
       builder: (context, model, child) => Container(

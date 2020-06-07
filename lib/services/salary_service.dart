@@ -13,11 +13,12 @@ class SalaryService with ReactiveServiceMixin {
   RxList<SalaryModel> get salaryModels => _salaryModels;
 
   void add(SalaryModel model) {
+    print('[SERVICE] Added to list');
     _salaryModels.add(model);
   }
 
   void remove(String uuid) {
-    print('removed from list');
+    print('[SERVICE] removed from list');
     _salaryModels.removeWhere((element) => element.id == uuid);
   }
 }

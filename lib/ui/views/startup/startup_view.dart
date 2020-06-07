@@ -48,19 +48,13 @@ class StartupView extends StatelessWidget {
                       child: ListView(
                         scrollDirection: Axis.horizontal,
                         children: <Widget>[
-                          Provider.value(
-                            value: StatCardTypes.HOURS,
-                            child: StatCard(
-                              key: UniqueKey(),
-                              cardType: StatCardTypes.HOURS,
-                            ),
+                          StatCard(
+                            key: UniqueKey(),
+                            cardType: StatCardTypes.HOURS,
                           ),
-                          Provider.value(
-                            value: StatCardTypes.SALARY,
-                            child: StatCard(
-                              key: UniqueKey(),
-                              cardType: StatCardTypes.SALARY,
-                            ),
+                          StatCard(
+                            key: UniqueKey(),
+                            cardType: StatCardTypes.SALARY,
                           ),
                         ],
                       ),
@@ -79,24 +73,25 @@ class StartupView extends StatelessWidget {
                     ),
                   ),
                   child: Padding(
-                      padding: EdgeInsets.only(
-                        left: 35.0,
-                        top: 40.0,
-                        right: 35.0,
-                      ),
-                      child: ListView.builder(
-                        itemBuilder: (BuildContext context, int index) {
-                          print('rebuilt list (index: $index)');
-                          return Provider.value(
-                            value: model.salaryModels[index],
-                            child: SalaryEntryCard(
-                              salaryModel: model.salaryModels[index],
-                              key: UniqueKey(),
-                            ),
-                          );
-                        },
-                        itemCount: model.salaryModels.length,
-                      )),
+                    padding: EdgeInsets.only(
+                      left: 35.0,
+                      top: 40.0,
+                      right: 35.0,
+                    ),
+                    child: ListView.builder(
+                      itemBuilder: (BuildContext context, int index) {
+                        print('rebuilt list (index: $index)');
+                        return Provider.value(
+                          value: model.salaryModels[index],
+                          child: SalaryEntryCard(
+                            salaryModel: model.salaryModels[index],
+                            key: UniqueKey(),
+                          ),
+                        );
+                      },
+                      itemCount: model.salaryModels.length,
+                    ),
+                  ),
                 ),
               )
             ],

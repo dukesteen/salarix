@@ -58,6 +58,7 @@ class AddSalaryEntryViewModel extends ReactiveViewModel {
       );
     } else {
       _salaryService.add(salaryModel);
+      notifyListeners();
       navBack();
     }
   }
